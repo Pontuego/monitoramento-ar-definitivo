@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       SensorCard(
                         title: 'Qualidade do Ar',
-                        value: '${sensorData?['air_quality'] ?? '--'} AQI',
+                        value: '${sensorData?['aqi'] ?? '--'} AQI',
                         icon: Icons.air,
                       ),
                       const SizedBox(height: 20),

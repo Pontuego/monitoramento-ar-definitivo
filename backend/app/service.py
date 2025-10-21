@@ -10,7 +10,7 @@ async def get_air_quality(lat: float, lon: float) -> AirQualityResponse:
             params={
                 "latitude": lat,
                 "longitude": lon,
-                "hourly": "pm2_5,pm10,carbon_monoxide,nitrogen_dioxide,ozone",
+                "hourly": "pm2_5,pm10,temperature_2m,relativehumidity_2m",
                 "timezone": "auto"
             }
         )
@@ -18,7 +18,10 @@ async def get_air_quality(lat: float, lon: float) -> AirQualityResponse:
 
     pm2_5 = data["hourly"]["pm2_5"][-1]
     pm10 = data["hourly"]["pm10"][-1]
+    temperature = data["hourly"]["temperature_2m"][-1]
+    humidity = data["hourly"]["relativehumidity_2m"][-1]
 
+    # AQI simplificado baseado no PM2.5
     if pm2_5 <= 12:
         aqi = 1
         status = "Bom"
@@ -44,7 +47,9 @@ async def get_air_quality(lat: float, lon: float) -> AirQualityResponse:
 
     return AirQualityResponse(
         location=location,
-        aqi=aqi,
+        temperature=temperature,
+        humidity=humidity,
+        air_quality=aqi,
         status=status,
         recommendation=recommendation
     )

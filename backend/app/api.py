@@ -4,14 +4,14 @@ from app.schemas import AirQualityResponse
 
 router = APIRouter()
 
-@router.get("/qualidade-ar", response_model=AirQualityResponse)
-async def qualidade_ar(
+@router.get("/sensor_data", response_model=AirQualityResponse)
+async def sensor_data(
     lat: float = Query(..., description="Latitude do usuário"),
     lon: float = Query(..., description="Longitude do usuário")
 ):
     """
     Endpoint principal: recebe latitude e longitude e retorna
-    a qualidade do ar processada.
+    temperatura, umidade e qualidade do ar.
     """
     data = await get_air_quality(lat, lon)
     return data
