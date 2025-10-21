@@ -8,7 +8,7 @@ app = FastAPI(title="Monitoramento da Poluição do Ar")
 origins = [
     "http://localhost:5173",                   # Se estiver rodando Flutter Web local
     "http://127.0.0.1:5173",
-    "https://0c3476319a2d.ngrok-free.app"     # URL gerada pelo ngrok
+    "https://592bb6ceb7f7.ngrok-free.app"     # URL gerada pelo ngrok
 ]
 
 app.add_middleware(
