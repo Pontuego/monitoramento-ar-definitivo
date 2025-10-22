@@ -1,9 +1,10 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class AirQualityResponse(BaseModel):
     location: str
-    temperature: float
-    humidity: float
-    air_quality: int
+    temperature: Optional[float]
+    humidity: Optional[float]
+    air_quality: Optional[int]
     status: str
     recommendation: str
